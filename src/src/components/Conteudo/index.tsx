@@ -1,7 +1,6 @@
 import { request } from 'https';
 import React, {useEffect, useState} from 'react';
 import type { Palavra, DataPalavra, Sinonimos as SinonimosType } from "../../types"
-import {requestPalavra, requestSinonimos} from "../utils"
 
 import { requestMeanings, requestSynonyms} from "../../services/requests"
 
