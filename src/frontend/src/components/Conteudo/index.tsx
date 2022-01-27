@@ -1,9 +1,9 @@
 import { request } from 'https';
 import React, {useEffect, useState} from 'react';
-import type { Palavra, DataPalavra } from "../../types"
+import type { Palavra, DataPalavra, Sinonimos as SinonimosType } from "../../types"
 import {requestPalavra, requestSinonimos} from "../utils"
 
-import {requestMeanings} from "../../services/meanings"
+import { requestMeanings, requestSynonyms} from "../../services/requests"
 
 import {Palavra as PalavraConteudo} from './Palavra';
 import { Classe } from './Classe';
@@ -33,8 +33,9 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
           })
           .catch(err => console.error(err))
 
-          requestSinonimos(palavra)
-            .then((response: string[]) => {
+          // Requisição sinonimos a dicio.com.br
+          requestSynonyms(palavra)
+            .then((response: SinonimosType) => {
               setSinonimos(response)
 
               setIsLoading(false)
@@ -44,8 +45,6 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
               console.error(err)
             })
 
-            
-
       }else{
 
         setClasse("")
@@ -54,8 +53,6 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
         setSinonimos([])
 
       }
-
-
     },
     [palavra]
   )

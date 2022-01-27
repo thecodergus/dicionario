@@ -1,7 +1,7 @@
 import axios from "axios"
 import cheerio from "cheerio"
 import {sanitizeWord} from "./utils"
-import {DataPalavra} from "../types"
+import type { DataPalavra, Sinonimos} from "../types"
 
 export const requestMeanings = async (word: string): Promise<DataPalavra> => {
     const sanitizedWord = sanitizeWord(word);
@@ -63,5 +63,43 @@ export const requestMeanings = async (word: string): Promise<DataPalavra> => {
         console.error(err);
         
         return structure
+    }
+}
+
+export const requestSynonyms = async (word: string): Promise<Sinonimos> => {
+    
+    const sanitizedWord = sanitizeWord(word);
+
+    try {
+
+        const { data: dicioHTML } = await axios.get(`https://dicio.com.br/${sanitizedWord}`);
+
+        const $ = cheerio.load(dicioHTML);
+
+        const synonyms: Sinonimos = [];
+
+        $('.sinonimos').each((_, children) => {
+
+            if ($(children).text().includes("é sinônimo de:")) {
+
+                $('a', children).each((_, element) => {
+
+                    const text = $(element).text();
+
+                    if (text) synonyms.push(text)
+
+                });
+
+            }
+
+        });
+
+        return synonyms
+
+    } catch (err) {
+        console.log(err);
+        
+        
+        return []
     }
 }

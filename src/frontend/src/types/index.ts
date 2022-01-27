@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export interface Palavra {
     palavra: string
 }
@@ -11,6 +13,8 @@ export interface DataPalavra {
     meanings: string[]
     etymology: string
 }
+
+export type Sinonimos = string[]
 
 export interface Options {
     value: string
