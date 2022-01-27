@@ -6,7 +6,11 @@ export const requestPalavra = async (palavra: string) => {
 
         return request.data[0]
     }catch(err){
-        return null
+        return {
+            class: "",
+            etymology: "",
+            meanings: []
+        }
     }
 }
 
