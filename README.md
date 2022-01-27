@@ -22,3 +22,7 @@ Busca em [dicio.com.br](dicio.com.br) as palavras pesquisas e seus sinonimos, fa
 5. ```npm start``` ou ```yarn start```
 6. Espere carregar a compilação
 7. Acesse [127.0.0.1:3000](http://127.0.0.1:3000/)
+
+## Como usar:
+1. Digite a palavra no input.
+2. Espere.
