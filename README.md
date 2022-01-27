@@ -4,7 +4,7 @@
 Construção de um sistema de consulta de palavras com base no banco de dados do dicionario online [dicio.com.br](dicio.com.br)
 
 ## O que ele faz internamente?
-Busca em [dicio.com.br](dicio.com.br) das palavras pesquisas e seus sinonimos, faz scrapping do counteudo visado e exibe em tela.
+Busca em [dicio.com.br](dicio.com.br) as palavras pesquisas e seus sinonimos, faz scrapping do counteudo visado e exibe em tela.
 
 ## O que compõe o Projeto?
 1. [TypeScript](https://www.typescriptlang.org/)
