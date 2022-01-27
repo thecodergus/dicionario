@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import "./index.css"
 import reportWebVitals from './reportWebVitals';
+import {Buffer} from "buffer"
+
+// Ajustando Buffer
+window.Buffer = window.Buffer || Buffer
 
 ReactDOM.render(
   <React.StrictMode>
