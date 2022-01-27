@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {AutoComplete} from "antd"
-import type { PalavraPesquisa, Options } from "./tipos"
+import type { PalavraPesquisa, Options } from "../types"
 
 const BarraPesquisa: React.FC<PalavraPesquisa> = ({ setPalavra }) => {
 

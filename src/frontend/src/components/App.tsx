@@ -4,6 +4,7 @@ import Home from './Home';
 import {Route, Routes, BrowserRouter, Navigate} from "react-router-dom"
 
 function App() {
+
   return (
       <BrowserRouter>
         <Routes>

@@ -1,7 +1,9 @@
 import { request } from 'https';
 import React, {useEffect, useState} from 'react';
-import type { Palavra, DataPalavra } from "../tipos"
+import type { Palavra, DataPalavra } from "../../types"
 import {requestPalavra, requestSinonimos} from "../utils"
+
+import {requestMeanings} from "../../services/meanings"
 
 import {Palavra as PalavraConteudo} from './Palavra';
 import { Classe } from './Classe';
@@ -15,11 +17,15 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   const [significados, setSignificados] = useState<string[]>([])
   const [etimologia, setEtimologia] = useState<string>("")
   const [sinonimos, setSinonimos] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   useEffect(
     () => {
       if(palavra !== ""){
-        requestPalavra(palavra)
+        setIsLoading(true)
+
+        // Requisição a dicio.com.br
+        requestMeanings(palavra)
           .then((response: DataPalavra) => {
             setClasse(response.class)
             setSignificados(response.meanings)
@@ -30,8 +36,23 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
           requestSinonimos(palavra)
             .then((response: string[]) => {
               setSinonimos(response)
+
+              setIsLoading(false)
             })
-            .catch(err => console.error(err))
+            .catch(err => {
+              setIsLoading(false)
+              console.error(err)
+            })
+
+            
+
+      }else{
+
+        setClasse("")
+        setSignificados([])
+        setEtimologia("")
+        setSinonimos([])
+
       }
 
 
