@@ -1,7 +1,7 @@
 # Dicionario
 
 ## Objetivo
-Construção de um sistema de consulta de palavras com base no banco de dados do dicionario online [dicio.com.br](dicio.com.br)
+Construção de um sistema de consulta de palavras no dicionario com base no dicionario online [dicio.com.br](dicio.com.br)
 
 ## O que ele faz internamente?
 Busca em [dicio.com.br](dicio.com.br) as palavras pesquisas e seus sinonimos, faz scrapping do counteudo visado e exibe em tela.
