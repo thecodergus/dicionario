@@ -1,5 +1,7 @@
 import { request } from 'https';
 import React, {useEffect, useState} from 'react';
+import { notification } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import type { Palavra, DataPalavra, Sinonimos as SinonimosType } from "../../types"
 
 import { requestMeanings, requestSynonyms} from "../../services/requests"
@@ -16,6 +18,17 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   const [significados, setSignificados] = useState<string[]>([])
   const [etimologia, setEtimologia] = useState<string>("")
   const [sinonimos, setSinonimos] = useState<string[]>([])
+  const [hidden, setHidden] = useState<boolean>(true)
+
+
+  const errorNotification = () => {
+    notification.open({
+      message: "Palavra não encontrada",
+      description: `A palavra "${palavra}" não foi encontrada`,
+      icon: <CloseOutlined style={{ color: "#FF0000"}} />,
+      style: { color: "#FF0000"}
+    })
+  }
 
 
   // Realiza a pesquisa e atualiza as informações do conteudo
@@ -24,11 +37,19 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
       // Requisição a dicio.com.br
       requestMeanings(palavra)
         .then((response: DataPalavra) => {
-          setClasse(response.class)
-          setSignificados(response.meanings)
-          setEtimologia(response.etymology)
+          if(response.class !== ""){
+            setClasse(response.class)
+            setSignificados(response.meanings)
+            setEtimologia(response.etymology)
+
+            setHidden(false)
+          }else{
+            errorNotification()
+          }          
         })
-        .catch(err => console.error(err))
+        .catch(err => {
+          console.error(err)
+        })
 
       // Requisição sinonimos a dicio.com.br
       requestSynonyms(palavra)
@@ -44,6 +65,8 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
       setSignificados([])
       setEtimologia("")
       setSinonimos([])
+
+      setHidden(true)
     }
   }
 
@@ -57,11 +80,11 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
 
   return (
     <>
-      <PalavraConteudo palavra={palavra} />
-      <Classe classe={classe} />
-      <Significados significados={significados} />
-      <Etimologia etimologia={etimologia} />
-      <Sinonimos sinonimos={sinonimos} />
+      <PalavraConteudo palavra={palavra} hidden={hidden} />
+      <Classe classe={classe} hidden={hidden} />
+      <Significados significados={significados} hidden={hidden} />
+      <Etimologia etimologia={etimologia} hidden={hidden} />
+      <Sinonimos sinonimos={sinonimos} hidden={hidden} />
     </>
   );
 }

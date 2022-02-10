@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import BarraPesquisa from './BarraPesquisa';
 import Conteudo from './Conteudo';
-import {Row, Col} from "antd"
+import {Row, Col, Layout} from "antd"
 
 
 function Home() {
@@ -33,7 +33,9 @@ function Home() {
           <BarraPesquisa palavra={""} setPalavra={setSearchWord} />
         </Col>
       </Row>
-      <Conteudo palavra={searchWord} />   
+      <Layout.Content>
+        <Conteudo palavra={searchWord} />   
+      </Layout.Content>
       </>
   );
 }

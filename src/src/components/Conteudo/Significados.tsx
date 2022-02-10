@@ -1,10 +1,11 @@
 import React from "react";
 import { Row, Col } from "antd"
 
-export const Significados: React.FC<{ significados: string[] }> = ({ significados }) => {
+export const Significados: React.FC<{ significados: string[], hidden: boolean }> = ({ significados, hidden }) => {
     return (
         <>
             <Row
+                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"
@@ -22,9 +23,11 @@ export const Significados: React.FC<{ significados: string[] }> = ({ significado
             {
                 significados.map((item, index) => (
                     <Row
+                        hidden={hidden}
                         gutter={12}
                         style={{ alignItems: "center" }}
                         justify="center"
+                        key={index}
                     >
                         <Col
                             span={12}
@@ -32,7 +35,7 @@ export const Significados: React.FC<{ significados: string[] }> = ({ significado
                                 textAlign: "center"
                             }}
                         >
-                            <p key={index}>{item}</p>
+                            <p>{item}</p>
                         </Col>
                     </Row>
                 ))
