@@ -18,6 +18,7 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   const [sinonimos, setSinonimos] = useState<string[]>([])
 
 
+  // Realiza a pesquisa e atualiza as informações do conteudo
   const updateData = () => {
     if(palavra !== ""){
       // Requisição a dicio.com.br
