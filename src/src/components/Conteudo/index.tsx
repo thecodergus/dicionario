@@ -16,43 +16,40 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   const [significados, setSignificados] = useState<string[]>([])
   const [etimologia, setEtimologia] = useState<string>("")
   const [sinonimos, setSinonimos] = useState<string[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(false)
 
+
+  const updateData = () => {
+    if(palavra !== ""){
+      // Requisição a dicio.com.br
+      requestMeanings(palavra)
+        .then((response: DataPalavra) => {
+          setClasse(response.class)
+          setSignificados(response.meanings)
+          setEtimologia(response.etymology)
+        })
+        .catch(err => console.error(err))
+
+      // Requisição sinonimos a dicio.com.br
+      requestSynonyms(palavra)
+        .then((response: SinonimosType) => {
+          setSinonimos(response)
+
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }else{
+      setClasse("")
+      setSignificados([])
+      setEtimologia("")
+      setSinonimos([])
+    }
+  }
+
+  // Executa quando o botão de pesquisa é apertado ou é selecionado uma palavra no auto complete da barra de pesquisa
   useEffect(
-    () => {
-      if(palavra !== ""){
-        setIsLoading(true)
-
-        // Requisição a dicio.com.br
-        requestMeanings(palavra)
-          .then((response: DataPalavra) => {
-            setClasse(response.class)
-            setSignificados(response.meanings)
-            setEtimologia(response.etymology)
-          })
-          .catch(err => console.error(err))
-
-          // Requisição sinonimos a dicio.com.br
-          requestSynonyms(palavra)
-            .then((response: SinonimosType) => {
-              setSinonimos(response)
-
-              setIsLoading(false)
-            })
-            .catch(err => {
-              setIsLoading(false)
-              console.error(err)
-            })
-
-      }else{
-
-        setClasse("")
-        setSignificados([])
-        setEtimologia("")
-        setSinonimos([])
-
-      }
-    },
+    updateData
+    ,
     [palavra]
   )
 
