@@ -18,6 +18,52 @@
 8. [Docker](https://www.docker.com/)
 9. [Docker Compose](https://docs.docker.com/compose/)
 
+## Arvore de diretorios e arquivos do projeto
+<details>
+  <summary>👉(<strong>Clique aqui 🔥</strong>)👈</summary>
+  ```
+  ├── README.md
+├── builds
+│   └── nodejs.Dockerfile
+├── docker-compose.yml
+└── src
+    ├── README.md
+    ├── package.json
+    ├── public
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── src
+    │   ├── components
+    │   │   ├── App.tsx
+    │   │   ├── BarraPesquisa.tsx
+    │   │   ├── Conteudo
+    │   │   │   ├── Classe.tsx
+    │   │   │   ├── Etimologia.tsx
+    │   │   │   ├── Item.tsx
+    │   │   │   ├── Palavra.tsx
+    │   │   │   ├── Significados.tsx
+    │   │   │   ├── Sinonimos.tsx
+    │   │   │   └── index.tsx
+    │   │   ├── Home.tsx
+    │   │   └── home.css
+    │   ├── index.css
+    │   ├── index.tsx
+    │   ├── reportWebVitals.ts
+    │   ├── services
+    │   │   ├── requests.ts
+    │   │   └── utils.ts
+    │   └── types
+    │       └── index.ts
+    ├── tsconfig.json
+    ├── yarn-error.log
+    └── yarn.lock
+  ```
+</details>
+
 ## Como instalar?
 - Com Docker e projeto buildado
 1. ```git clone https://github.com/gusscamargo/dicionario```
