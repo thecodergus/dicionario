@@ -78,12 +78,11 @@
 
 - Sem Docker e projeto não buildado
 1. ```git clone https://github.com/gusscamargo/dicionario```
-2. ``` cd dicionario```
-3. ```cd src```
-4. ```npm install``` ou ```yarn install```
-5. ```npm start``` ou ```yarn start```
-6. Espere carregar a compilação
-7. Acesse [127.0.0.1:3000](http://127.0.0.1:3000/)
+2. ``` cd dicionario/src```
+3. ```npm install``` ou ```yarn install```
+4. ```npm start``` ou ```yarn start```
+5. Espere carregar a compilação
+6. Acesse [127.0.0.1:3000](http://127.0.0.1:3000/)
 
 ## Como usar:
 1. Digite a palavra e aperte enter ou clique no botão.
