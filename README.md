@@ -37,3 +37,4 @@ Construção de um sistema de consulta de palavras no dicionario com base no dic
 ## Como usar:
 1. Digite a palavra e aperte enter ou clique no botão.
 2. Espere.
+![GIF](https://i.imgur.com/wTjBxkg.gif)
