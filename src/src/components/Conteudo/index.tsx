@@ -89,11 +89,11 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   const showContent = () => {
     const time = 1000
 
-    setTimeout(() => setShowPalavra(true), time * 1)
-    setTimeout(() => setShowClasse(true), time * 2)
-    setTimeout(() => setShowSignificados(true), time * 3)
-    setTimeout(() => setShowEtimologia(true), time * 4)
-    setTimeout(() => setShowSinonimos(true), time * 5)
+    setTimeout(() => setShowPalavra(true), time * 0)
+    setTimeout(() => setShowClasse(true), time * 1)
+    setTimeout(() => setShowSignificados(true), time * 2)
+    setTimeout(() => setShowEtimologia(true), time * 3)
+    setTimeout(() => setShowSinonimos(true), time * 4)
 
   }
 
