@@ -32,12 +32,12 @@ export const Significados: React.FC<{ significados: string[], hidden: boolean }>
                         <Col
                             span={12}
                             style={{
-                                textAlign: "center"
+                                // textAlign: "center"
                             }}
                         >
                             <h3 style={{
                                 fontFamily: "monospace"
-                            }}>{item}</h3>
+                            }}>• {item}</h3>
                         </Col>
                     </Row>
                 ))

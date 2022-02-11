@@ -37,7 +37,7 @@ export const Sinonimos: React.FC<{ sinonimos: string[], hidden: boolean }> = ({ 
                         >
                             <h3 style={{
                                 fontFamily: "monospace"
-                            }}>{item}</h3>
+                            }}>• {item}</h3>
                         </Col>
                     </Row>
                 ))
