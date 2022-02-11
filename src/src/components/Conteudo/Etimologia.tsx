@@ -31,7 +31,9 @@ export const Etimologia: React.FC<{ etimologia: string, hidden: boolean }> = ({ 
                         textAlign: "center"
                     }}
                 >
-                    <p>{etimologia}</p>
+                    <h3 style={{
+                        fontFamily: "monospace"
+                    }}>{etimologia}</h3>
                 </Col>
             </Row>
         

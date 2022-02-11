@@ -35,7 +35,9 @@ export const Significados: React.FC<{ significados: string[], hidden: boolean }>
                                 textAlign: "center"
                             }}
                         >
-                            <p>{item}</p>
+                            <h3 style={{
+                                fontFamily: "monospace"
+                            }}>{item}</h3>
                         </Col>
                     </Row>
                 ))

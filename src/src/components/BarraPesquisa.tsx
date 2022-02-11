@@ -12,7 +12,7 @@ const BarraPesquisa: React.FC<PalavraPesquisa> = ({ setPalavra, palavra }) => {
   const [options, setOptions] = useState<Options[]>([])
   const onSearch = (searchText: string) => setPalavraPesquisa(searchText)
   const onSelect = (data: string) => setPalavra(data)
-  const serchWord = () => setPalavra(palavraPesquisa)
+  const searchWord = () => setPalavra(palavraPesquisa)
 
   return (
     <>
@@ -21,11 +21,18 @@ const BarraPesquisa: React.FC<PalavraPesquisa> = ({ setPalavra, palavra }) => {
         style={{ width: "90%" }}
         onSelect={onSelect}
         onSearch={onSearch}
-        placeholder="input here"
+        placeholder="Escreva aqui"
+        onInputKeyDown={
+          e => {
+            if(e.key === "Enter"){
+              searchWord()
+            }
+          }
+        }
       />
       <Tooltip title="search">
         <Button type="primary" shape="circle" icon={<SearchOutlined />}
-          onClick={serchWord}
+          onClick={searchWord}
         />
       </Tooltip>
     </>

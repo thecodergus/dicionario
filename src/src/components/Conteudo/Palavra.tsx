@@ -31,7 +31,9 @@ export const Palavra: React.FC<{palavra: string, hidden: boolean}> = ({palavra, 
                         textAlign: "center"
                     }}
                 >
-                    <p>{palavra}</p>
+                    <h3 style={{
+                        fontFamily: "monospace"
+                    }}>{palavra}</h3>
                 </Col>
             </Row>
         

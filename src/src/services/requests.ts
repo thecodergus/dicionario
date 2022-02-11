@@ -60,7 +60,7 @@ export const requestMeanings = async (word: string): Promise<DataPalavra> => {
         return meanings[0]
 
     } catch (err) {
-        console.error(err);
+        // console.error(err);
         
         return structure
     }
@@ -97,7 +97,7 @@ export const requestSynonyms = async (word: string): Promise<Sinonimos> => {
         return synonyms
 
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         
         
         return []

@@ -31,7 +31,9 @@ export const Classe: React.FC<{ classe: string, hidden: boolean }> = ({ classe, 
                         textAlign: "center"
                     }}
                 >
-                    <p>{classe}</p>
+                    <h3 style={{
+                        fontFamily: "monospace"
+                    }}>{classe}</h3>
                 </Col>
             </Row>
             
