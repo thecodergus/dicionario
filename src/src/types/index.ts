@@ -1,4 +1,5 @@
 import { type } from "os";
+import React from "react";
 
 export interface Palavra {
     palavra: string
@@ -18,4 +19,9 @@ export type Sinonimos = string[]
 
 export interface Options {
     value: string
+}
+
+export interface ContentItem {
+    children: JSX.Element
+    show: boolean
 }

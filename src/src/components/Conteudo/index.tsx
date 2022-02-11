@@ -13,10 +13,13 @@ import { Significados } from './Significados';
 import { Etimologia } from './Etimologia';
 import { Sinonimos } from './Sinonimos';
 
+import Item from "./Item"
+
 const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   //https://motion.ant.design/components/tween-one#components-tween-one-demo-position
   // animação
 
+  const [palavraAux, setPalavraAux] = useState<string>(palavra)
   const [classe, setClasse] = useState<string>("")
   const [significados, setSignificados] = useState<string[]>([])
   const [etimologia, setEtimologia] = useState<string>("")
@@ -43,6 +46,9 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
 
   // Realiza a pesquisa e atualiza as informações do conteudo
   const updateData = () => {
+    
+    setPalavraAux(palavra)
+
     if(palavra !== ""){
       // Requisição a dicio.com.br
       requestMeanings(palavra)
@@ -80,9 +86,34 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
     }
   }
 
+  const showContent = () => {
+    const time = 1000
+
+    setTimeout(() => setShowPalavra(true), time * 1)
+    setTimeout(() => setShowClasse(true), time * 2)
+    setTimeout(() => setShowSignificados(true), time * 3)
+    setTimeout(() => setShowEtimologia(true), time * 4)
+    setTimeout(() => setShowSinonimos(true), time * 5)
+
+  }
+
+  const hiddenContent = () => {
+    setShowPalavra(false)
+    setShowClasse(false)
+    setShowSignificados(false)
+    setShowEtimologia(false)
+    setShowSinonimos(false)
+  }
+
   // Executa quando o botão de pesquisa é apertado ou é selecionado uma palavra no auto complete da barra de pesquisa
   useEffect(
-    updateData
+    () => {
+      hiddenContent()
+      setTimeout(updateData, 1000)
+      if(palavra !== ""){
+        setTimeout(showContent, 1500)
+      }
+    }
     ,
     [palavra]
   )
@@ -90,20 +121,11 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
   // Startar mostrar
   useEffect(
     () => {
-      const time = 1000
-
+  
       if(hidden === false){
-        setTimeout(() => setShowPalavra(true), time * 1)
-        setTimeout(() => setShowClasse(true), time * 2)
-        setTimeout(() => setShowSignificados(true), time * 3)
-        setTimeout(() => setShowEtimologia(true), time * 4)
-        setTimeout(() => setShowSinonimos(true), time * 5)
+        showContent()
       }else{
-        setShowPalavra(false)
-        setShowClasse(false)
-        setShowSignificados(false)
-        setShowEtimologia(false)
-        setShowSinonimos(false)
+        hiddenContent()
       }
     },
     [hidden]
@@ -112,90 +134,21 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
 
   return (
     <>
-      <AnimatePresence>
-        {
-          showPalavra &&(
-            <motion.div
-              animate={{ y: 100 }}
-              transition={{
-                delay: 0,
-                y: { type: "spring", stiffness: 400 },
-                default: { duration: 2 },
-              }}
-            >
-              <PalavraConteudo palavra={palavra} />
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
-      
-      <AnimatePresence>
-        {
-          showClasse &&(
-            <motion.div
-              animate={{ y: 100 }}
-              transition={{
-                delay: 0,
-                y: { type: "spring", stiffness: 400 },
-                default: { duration: 2 },
-              }}
-            >
-              <Classe classe={classe} />
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {
-          showSignificados &&(
-            <motion.div
-              animate={{ y: 100 }}
-              transition={{
-                delay: 0,
-                y: { type: "spring", stiffness: 400 },
-                default: { duration: 2 },
-              }}
-            >
-              <Significados significados={significados} />
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {
-          showEtimologia &&(
-            <motion.div
-              animate={{ y: 100 }}
-              transition={{
-                delay: 0,
-                y: { type: "spring", stiffness: 400 },
-                default: { duration: 2 },
-              }}
-            >
-              <Etimologia etimologia={etimologia} />
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {
-          showSinonimos &&(
-            <motion.div
-              animate={{ y: 100 }}
-              transition={{
-                delay: 0,
-                y: { type: "spring", stiffness: 400 },
-                default: { duration: 2 },
-              }}
-            >
-              <Sinonimos sinonimos={sinonimos} />
-            </motion.div>
-          )
-        }
-      </AnimatePresence>
+      <Item show={showPalavra}>
+        <PalavraConteudo palavra={palavraAux} />
+      </Item>
+      <Item show={showClasse}>
+        <Classe classe={classe} />
+      </Item>
+      <Item show={showSignificados}>
+        <Significados significados={significados} />
+      </Item>
+      <Item show={showEtimologia}>
+        <Etimologia etimologia={etimologia} />
+      </Item>
+      <Item show={showSinonimos}>
+        <Sinonimos sinonimos={sinonimos} />
+      </Item>
     </>
   );
 }
