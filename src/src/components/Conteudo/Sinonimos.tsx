@@ -1,11 +1,10 @@
 import React from "react";
 import { Row, Col } from "antd"
 
-export const Sinonimos: React.FC<{ sinonimos: string[], hidden: boolean }> = ({ sinonimos, hidden }) => {
+export const Sinonimos: React.FC<{ sinonimos: string[] }> = ({ sinonimos }) => {
     return (
         <>
             <Row
-                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"
@@ -23,7 +22,6 @@ export const Sinonimos: React.FC<{ sinonimos: string[], hidden: boolean }> = ({ 
                 sinonimos.map((item, index) => (
                     
                     <Row
-                        hidden={hidden}
                         gutter={12}
                         style={{ alignItems: "center" }}
                         justify="center"

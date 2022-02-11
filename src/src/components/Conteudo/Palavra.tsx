@@ -1,11 +1,10 @@
 import React from "react"
 import { Row, Col } from "antd"
 
-export const Palavra: React.FC<{palavra: string, hidden: boolean}> = ({palavra, hidden}) => {
+export const Palavra: React.FC<{palavra: string}> = ({palavra}) => {
     return (
         <>
             <Row
-                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"
@@ -20,7 +19,6 @@ export const Palavra: React.FC<{palavra: string, hidden: boolean}> = ({palavra, 
                 </Col>
             </Row>
             <Row
-                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"

@@ -1,11 +1,10 @@
 import React from "react";
 import { Row, Col } from "antd"
 
-export const Etimologia: React.FC<{ etimologia: string, hidden: boolean }> = ({ etimologia, hidden}) => {
+export const Etimologia: React.FC<{ etimologia: string }> = ({ etimologia}) => {
     return (
         <>
             <Row
-                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"
@@ -20,7 +19,6 @@ export const Etimologia: React.FC<{ etimologia: string, hidden: boolean }> = ({ 
                 </Col>
             </Row>
             <Row
-                hidden={hidden}
                 gutter={12}
                 style={{ alignItems: "center" }}
                 justify="center"
