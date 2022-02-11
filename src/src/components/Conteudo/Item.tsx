@@ -10,10 +10,10 @@ const Item: React.FC<ContentItem> = ({children, show}) => {
               {
                   show && (
                       <motion.div
-                          animate={{ y: 100 }}
+                          animate={{ y: 50 }}
                           transition={{
                               delay: 0,
-                              y: { type: "spring", stiffness: 400 },
+                              y: { type: "spring", stiffness: 600 },
                               default: { duration: 2 },
                           }}
                           exit={{ opacity: 0 }}
