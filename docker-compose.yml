@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./builds/nodejs.Dockerfile
+    restart: always
+    ports:
+      - ${APP_PORT}:3000
