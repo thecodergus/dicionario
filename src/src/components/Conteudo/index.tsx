@@ -120,8 +120,7 @@ const Conteudo: React.FC<Palavra> = ({ palavra }) => {
 
   // Startar mostrar
   useEffect(
-    () => {
-  
+    () => {  
       if(hidden === false){
         showContent()
       }else{
