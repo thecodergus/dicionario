@@ -15,6 +15,8 @@ Construção de um sistema de consulta de palavras no dicionario com base no dic
 5. [React Router](https://reactrouter.com/)
 6. [yarn](https://yarnpkg.com/)
 7. [Framer](https://www.framer.com/)
+8. [Docker](https://www.docker.com/)
+9. [Docker Compose](https://docs.docker.com/compose/)
 
 ## Como instalar?
 - Com Docker e projeto buildado
