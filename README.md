@@ -1,7 +1,7 @@
 # Dicionario
 
 ## O que é?
-Interface de dicionario animado criado com ReactJS junto a um ambiente Docker. Todo seu conteudo exibido é gerado por via de scraping ao website [dicio.com.br](dicio.com.br).
+É uma interface de dicionario animado criado com ReactJS junto a um ambiente Docker. Todo seu conteudo exibido é gerado por via de scraping ao website [dicio.com.br](dicio.com.br).
 
 ## O que ele faz?
 - Faz scrap das palavras pesquisadas diretamente de [dicio.com.br](https://dicio.com.br/)
